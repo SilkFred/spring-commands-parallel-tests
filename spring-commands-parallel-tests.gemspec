@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "spring-commands-parallel-tests"
-  spec.version       = "1.0.0"
+  spec.version       = "1.0.1"
   spec.authors       = ["Jon Leighton", "Nathan Broadbent"]
   spec.email         = ["j@jonathanleighton.com", "nathan@docspring.com"]
   spec.description   = %q{parallel_tests commands for spring}
