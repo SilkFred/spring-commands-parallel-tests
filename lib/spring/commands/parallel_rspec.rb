@@ -1,5 +1,10 @@
 require 'spring/application'
 
+# The parallel_tests gem disables Spring by default by calling: ENV['DISABLE_SPRING'] ||= '1'
+# https://github.com/grosser/parallel_tests/blob/master/lib/parallel_tests/cli.rb#L13
+# Our code runs first, so we can set the default value to '0'.
+ENV['DISABLE_SPRING'] ||= '0'
+
 module Spring
   # Patch Spring to work with parallel_tests
   # From: https://github.com/grosser/parallel_tests/wiki/Spring
