@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "spring-commands-parallel-rspec"
-  spec.version       = "1.0.0"
+  spec.version       = "1.1.0"
   spec.authors       = ["Jon Leighton", "Nathan Broadbent"]
   spec.email         = ["j@jonathanleighton.com", "nathan@docspring.com"]
   spec.description   = %q{parallel_rspec command for spring}
