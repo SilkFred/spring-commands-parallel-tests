@@ -5,31 +5,13 @@ This gem implements the `parallel_rspec` command for
 
 This is a fork of the [spring-commands-rspec](https://github.com/jonleighton/spring-commands-rspec) gem to suppor the `parallel_rspec` command from the [parallel_tests](https://github.com/grosser/parallel_tests) gem.
 
-This gem also [patches Spring to reload the database configuration and reconnect the database](https://github.com/grosser/parallel_tests/wiki/Spring), which allows you to use `<%= ENV['TEST_ENV_NUMBER'] %>` in `database.yml`:
+This gem force-enables Spring, since `parallel_tests` [disables Spring by default](https://github.com/grosser/parallel_tests/blob/master/lib/parallel_tests/cli.rb#L13). It also automatically [patches Spring to reload the database configuration](https://github.com/grosser/parallel_tests/wiki/Spring), which allows you to use `<%= ENV['TEST_ENV_NUMBER'] %>` in `database.yml`.
 
-```ruby
-require 'spring/application'
+See these GitHub issues and PRs for more information:
 
-class Spring::Application
-  alias connect_database_orig connect_database
-
-  def connect_database
-    disconnect_database
-    reconfigure_database
-    connect_database_orig
-  end
-
-  def reconfigure_database
-    if active_record_configured?
-      ActiveRecord::Base.configurations =
-        Rails.application.config.database_configuration
-    end
-  end
-end
-```
-
-> [See the discussion on this GitHub issue](https://github.com/grosser/parallel_tests/issues/309).
-
+* [parallel_tests#309](https://github.com/grosser/parallel_tests/issues/309)
+* [parallel_tests#468](https://github.com/grosser/parallel_tests/issues/468)
+* [parallel_tests#469](https://github.com/grosser/parallel_tests/issues/469)
 
 ## Usage
 
