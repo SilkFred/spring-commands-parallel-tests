@@ -26,7 +26,7 @@ module Spring
   end
 
   module Commands
-    class ParallelRSpec
+    class ParallelTests
       def env(*)
         "test"
       end
@@ -45,7 +45,29 @@ module Spring
       end
     end
 
+    class ParallelRSpec < ParallelTests
+      def exec_name
+        "parallel_rspec"
+      end
+    end
+
+    class ParallelCucumber < ParallelTests
+      def exec_name
+        "parallel_cucumber"
+      end
+    end
+
+    class ParallelSpinach < ParallelTests
+      def exec_name
+        "parallel_spinach"
+      end
+    end
+
+    Spring.register_command "parallel_test", ParallelTest.new
     Spring.register_command "parallel_rspec", ParallelRSpec.new
+    Spring.register_command "parallel_cucumber", ParallelCucumber.new
+    Spring.register_command "parallel_spinach", ParallelSpinach.new
+
     Spring::Commands::Rake.environment_matchers[/^spec($|:)/] = "test"
   end
 end
