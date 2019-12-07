@@ -26,13 +26,13 @@ module Spring
   end
 
   module Commands
-    class ParallelTests
+    class ParallelTest
       def env(*)
         "test"
       end
 
       def exec_name
-        "parallel_rspec"
+        "parallel_test"
       end
 
       def gem_name
@@ -45,19 +45,19 @@ module Spring
       end
     end
 
-    class ParallelRSpec < ParallelTests
+    class ParallelRSpec < ParallelTest
       def exec_name
         "parallel_rspec"
       end
     end
 
-    class ParallelCucumber < ParallelTests
+    class ParallelCucumber < ParallelTest
       def exec_name
         "parallel_cucumber"
       end
     end
 
-    class ParallelSpinach < ParallelTests
+    class ParallelSpinach < ParallelTest
       def exec_name
         "parallel_spinach"
       end
