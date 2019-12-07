@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+rm -f spring-commands-parallel-tests*.gem
+gem build spring-commands-parallel-tests.gemspec
+gem push spring-commands-parallel-tests*.gem
