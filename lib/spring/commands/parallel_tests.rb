@@ -1,5 +1,4 @@
 require 'spring/application'
-
 # The parallel_tests gem disables Spring by default by calling: ENV['DISABLE_SPRING'] ||= '1'
 # https://github.com/grosser/parallel_tests/blob/master/lib/parallel_tests/cli.rb#L13
 # Our code runs first, so we can set the default value to '0'.
@@ -21,6 +20,10 @@ module Spring
       if active_record_configured?
         ActiveRecord::Base.configurations =
           Rails.application.config.database_configuration
+      end
+
+      if defined? Mongoid
+        Mongoid.load! "#{Rails.root}/config/mongoid.yml", Rails.env
       end
     end
   end
